@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Admin Panel - Mangalmani Mobile</h2>
+  <a href="{{ url_for('logout') }}">Logout</a>
+
+  <h3>Add New Product</h3>
+  <form action="/add" method="POST">
+    <input type="text" name="name" placeholder="Product Name" required>
+    <input type="text" name="price" placeholder="Price" required>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <h3>Product List</h3>
+  <table border="1" align="center" cellpadding="10">
+    <tr><th>ID</th><th>Name</th><th>Price</th><th>Action</th></tr>
+    {% for p in products %}
+    <tr>
+      <td>{{ p['id'] }}</td>
+      <td>{{ p['name'] }}</td>
+      <td>₹{{ p['price'] }}</td>
+      <td><a href="/delete/{{ p['id'] }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+  </html>
