@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mangalmani Mobile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="logo">
+    <h1><span class="gold-text">MANGALMANI MOBILE</span></h1>
+    <p>Your Trusted Mobile & Accessories Store</p>
+  </header>
+
+  <h2>📱 Available Products</h2>
+  <div class="product-grid">
+    {% for p in products %}
+    <div class="product-card">
+      <h3>{{ p['name'] }}</h3>
+      <p>₹{{ p['price'] }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <footer>
+    <p>© 2025 Mangalmani Mobile | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
